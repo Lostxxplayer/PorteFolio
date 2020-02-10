@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PortefolioController!{% endblock %}
+
+{% block body %}
+{% if app.user %}
+<section class="projects">
+
+{% for project in projects %}
+<projects>
+    <h2>{{ project.title }}</h2>
+    <div class="metadata">Publier le {{ project.createdAt | date('d/m/Y') }} a {{ project.createdAt | date ('H:i') }} dans la categorie {{ project.category.title }}</div>
+    <div class="content">
+        <img src="{{ project.image }}" alt="">
+        {{ project.content | raw }}
+        <a href="{{ path('projects_show',{'id': project.id}) }}" class="btn btn-primary">Voir le projects</a>
+    </div>
+</projects>
+
+{% endfor %}
+
+{% else %}
+<h1>Mercie de vous connecter !!</h1>
+{% endif %}
+</section>
+{% endblock %}

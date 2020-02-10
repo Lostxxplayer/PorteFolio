@@ -1,0 +1,27 @@
+# config/packages/security.yaml
+security:
+    
+    providers:
+        in_memory: { memory: ~ }
+        in_database:
+            entity:
+                class: App\Entity\User
+                property: email
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: lazy
+            provider: in_database
+            form_login:
+                login_path: security_login
+                check_path: security_login
+            logout:
+                path: security_logout
+                target: home
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+
+   

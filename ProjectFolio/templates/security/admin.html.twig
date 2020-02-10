@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<h1>Bienvenu Cher Admin</h1>
+<section class="users">
+{% for user in users %}
+
+    {{ user.username }} {{ user.email }}
+{% endfor %}
+
+</section>
+
+{% endblock %}

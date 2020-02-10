@@ -1,0 +1,29 @@
+
+{% extends 'base.html.twig' %}
+
+{% form_theme formProject 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+{% if app.user %}
+<h1>Ajouter un Project</h1>
+
+{{ form_start(formProject) }}
+{{ form_row(formProject.title, {'attr' : {'placeholder':"Titre du project"}}) }}
+{{ form_row(formProject.content, {'attr': {'placeholder':"Description du project"}}) }}
+{{ form_row(formProject.image, {'attr': {'placeholder':"Image du project"}}) }}
+{{ form_row(formProject.category) }}
+
+<button type="submit" class="btn btn-success">
+{% if editMode %}
+Enregistrer La Modification
+{% else %}
+Soumettre le Project
+{% endif %}
+</button>
+
+
+{{ form_end(formProject) }}
+{% else %}
+<h1>Mercie de vous connecter !!</h1>
+{% endif %}
+{% endblock %}
